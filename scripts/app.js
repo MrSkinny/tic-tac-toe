@@ -19,6 +19,11 @@ let Players = [
 ];
 
 let Game = {
+  init: function(){
+    $('#player-X').attr('value', Players[0].name);
+    $('#player-O').attr('value', Players[1].name);
+  },
+  
   settings: {
     playerCount: 1
   },
@@ -36,7 +41,7 @@ let Game = {
   }
 };
 
-let listeners = {
+let Listeners = {
   init: function(){
     $('#button-game-start').on('click', ()=>{
       gameRunning ? stopGame() : startGame();
@@ -77,7 +82,7 @@ function startGame(){
   toggleStartGameButton('stop');
   currentPlayer = Players[0];
   setPlayerNames('disabled');
-  listeners.gameRunning();
+  Listeners.gameRunning();
 }
 
 function stopGame(){
@@ -85,12 +90,17 @@ function stopGame(){
   toggleStartGameButton('start');
   currentPlayer = null;
   setPlayerNames('enabled');
-  listeners.gameStopped();
+  Listeners.gameStopped();
   updateDashboard();
 }
 
 function resetGame(){
   clearBoard();
+  clearWinner();
+}
+
+function clearWinner(){
+  $('#player-won').text('');
 }
 
 function clearBoard(){
@@ -134,13 +144,16 @@ function setMove(player,position){
   
   Game.board[position.attr('id')] = player.side;
   updateBoard();
-  
-  if (checkGameEnd()) stopGame();
-  if (playerWon()) {
-    console.log(playerWon());
-    let info = playerWon();
-    $('#player-won').text("... " + info.winner.name + " wins!!");
-    info.spaces.forEach( space => space.find('.content').removeClass('white').addClass('pink blink-me'));
+
+  let gameEndInfo = gameEnd();
+  if (gameEndInfo) {
+    stopGame();
+    if (!gameEndInfo.winner){
+      $('#player-won').text("... it's a tie. LAME!!");
+    } else {
+      $('#player-won').text("... " + gameEndInfo.winner.name + " wins!!");
+      gameEndInfo.spaces.forEach( space => space.find('.content').removeClass('white').addClass('pink blink-me'));
+    }
   }
   
   return true;
@@ -151,7 +164,7 @@ function nextPlayer(){
   updateDashboard();
 }
 
-function playerWon(){
+function gameEnd(){
   if ( Game.board['A1'] !== ' ' && (Game.board['A1'] === Game.board['A2'] && Game.board['A2'] === Game.board['A3']) ){
     return {
       winner: (Players[0].side === Game.board['A1'] ? Players[0] : Players[1]),
@@ -192,13 +205,14 @@ function playerWon(){
       winner: (Players[0].side === Game.board['C1'] ? Players[0] : Players[1]),
       spaces: [ $('#C1'), $('#B2'), $('#A3') ]
     };
+  } else if (!_.includes(Game.board, " ")) {
+    return {
+      winner: null,
+      spaces: null
+    };
   }
   return null;
 }
 
-function checkGameEnd(){
-  return (!_.includes(Game.board, " ") || playerWon()) ? true : false;
-}
-
-listeners.init();
-
+Listeners.init();
+Game.init();

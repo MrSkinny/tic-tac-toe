@@ -1,0 +1,29 @@
+
+.ttt-gridbox {
+  background-color: gray;
+  height: 100px;
+  width: 100px;
+  align-items: center;
+  display: flex;
+  margin: 10px;
+}
+
+.ttt-gridbox #content {
+  font-size: 42px;
+  font-weight: bolder;
+  color: white;
+  margin: 0 auto 0 auto;
+}
+
+.blink-me {
+  animation: blinker 1s linear infinite;
+  color: pink;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0.0; }
+}
+
+.pink {
+  color: pink;
+}

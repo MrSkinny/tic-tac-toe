@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tic Tac Toe</title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+  </head>
+  <body>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Tic Tac Toe</h1>
+        </div>
+      </div>
+      
+      <div class="row ttt-gridrow">
+        <div class="col-md-4 ttt-gridbox" id="A1">
+          <div id="content">
+          </div>
+        </div>
+        <div class="col-md-4 ttt-gridbox" id="B1">
+          <div id="content">
+            
+          </div>
+        </div>
+        <div class="col-md-4 ttt-gridbox" id="C1">
+          <div id="content">
+            
+          </div>
+        </div>
+      </div>
+      <div class="row ttt-grid">
+        <div class="col-md-4 ttt-gridbox" id="A2">
+          <div id="content">
+            
+          </div>
+        </div>
+        <div class="col-md-4 ttt-gridbox" id="B2">
+          <div id="content">
+            
+          </div>
+        </div>
+        <div class="col-md-4 ttt-gridbox" id="C2">
+          <div id="content">
+            
+          </div>
+        </div>
+      </div>
+      <div class="row ttt-grid">
+        <div class="col-md-4 ttt-gridbox" id="A3">
+          <div id="content">
+            
+          </div>
+        </div>
+        <div class="col-md-4 ttt-gridbox" id="B3">
+          <div id="content">
+            
+          </div>
+        </div>
+        <div class="col-md-4 ttt-gridbox" id="C3">
+          <div id="content">
+            
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-1">
+          <button class="btn btn-primary" id="button-game-start">Start Game</button>
+        </div>
+        <div class="col-md-7">
+          <p style="margin-left: 10px">Current Player: <span id="current-player"></span></p>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-md-1">
+          Player 'X':
+        </div>
+        <div class="col-md-11">
+          <input type="text" id="player-X" class="player-name">
+        </div>
+      </div>
+      <div class="row" style="margin-top: 3px">
+        <div class="col-md-1">
+          Player 'O':
+        </div>
+        <div class="col-md-11">
+          <input type="text" id="player-O" class="player-name">
+        </div>
+      </div>
+
+    </div>
+    
+    
+    
+    
+    
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="scripts/app.js"></script>
+  </body>
+</html>

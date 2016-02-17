@@ -111,7 +111,7 @@ function updateBoard(){
       col = "C";
       row = i - 6;
     }
-    $('#'+col+row+' #content').text(Game.board[col+row]);
+    $('#'+col+row+' .content').text(Game.board[col+row]);
   }
 }
 

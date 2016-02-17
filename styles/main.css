@@ -30,3 +30,7 @@
 .pink {
   color: pink;
 }
+
+#player-won {
+  color: red;
+}

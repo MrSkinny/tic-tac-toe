@@ -8,12 +8,12 @@ let currentPlayer = null;
 let Players = [
   {
     id: 1,
-    name: 'Rich',
+    name: 'Jack',
     side: 'X'
   },
   {
     id: 2,
-    name: 'Laura',
+    name: 'Jill',
     side: 'O'
   }
 ];
